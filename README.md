@@ -7,11 +7,9 @@ Shared TypeScript types and endpoint constants for BeeFriends — used by the fr
 ```bash
 # Via GitHub Packages
 npm install @beefriends/shared-kernel --registry=https://npm.pkg.github.com
-```
 
-Or via local path (development):
-```bash
-npm install ../Shared-Kernel-BeeFriends
+# atau langsung dari GitHub
+npm install github:BeeeFriends/BeeFriends-Shared-Kernel
 ```
 
 ## Usage

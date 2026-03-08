@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/Shared-Kernel-BeeFriends.git"
+    "url": "https://github.com/BeeeFriends/BeeFriends-Shared-Kernel.git"
   },
   "devDependencies": {
     "typescript": "^5.7.3"
