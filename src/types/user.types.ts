@@ -24,7 +24,6 @@ export interface UserDto {
   Email: string | null;
   ImageUrl: string;
   Description: string;
-  Avatar: string;
   CampusID: number | null;
   DepartmentID: number | null;
   CodeYear: number | null;
@@ -64,7 +63,6 @@ export interface FirebaseAuthDto {
 export interface UpdateUserDto {
   Username?: string;
   Description?: string;
-  Avatar?: string;
   ImageUrl?: string;
   CampusID?: number;
   DepartmentID?: number;
