@@ -2,16 +2,33 @@
   "name": "@beefriends/shared-kernel",
   "version": "1.0.0",
   "description": "Shared types and endpoint constants for BeeFriends",
+  "author": "BeeFriends Team",
+  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch"
-  },
-  "devDependencies": {
-    "typescript": "^5.7.3"
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./types": {
+      "require": "./dist/types/user.types.js",
+      "types": "./dist/types/user.types.d.ts"
+    },
+    "./endpoints": {
+      "require": "./dist/endpoints/user.endpoints.js",
+      "types": "./dist/endpoints/user.endpoints.d.ts"
+    }
   },
   "files": [
     "dist"
-  ]
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
 }
