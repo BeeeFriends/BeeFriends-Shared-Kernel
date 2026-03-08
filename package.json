@@ -32,7 +32,8 @@
     "release:major": "npm version major && git push && git push --tags"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "repository": {
     "type": "git",
