@@ -1,11 +1,24 @@
 {
   "name": "@beefriends/shared-kernel",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Shared types and endpoint constants for BeeFriends",
   "author": "BeeFriends Team",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "types": [
+        "dist/types/user.types.d.ts"
+      ],
+      "dto": [
+        "dist/dto/user.dto.d.ts"
+      ],
+      "endpoints": [
+        "dist/endpoints/user.endpoints.d.ts"
+      ]
+    }
+  },
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -14,6 +27,10 @@
     "./types": {
       "require": "./dist/types/user.types.js",
       "types": "./dist/types/user.types.d.ts"
+    },
+    "./dto": {
+      "require": "./dist/dto/user.dto.js",
+      "types": "./dist/dto/user.dto.d.ts"
     },
     "./endpoints": {
       "require": "./dist/endpoints/user.endpoints.js",
@@ -39,7 +56,21 @@
     "type": "git",
     "url": "git+https://github.com/BeeeFriends/BeeFriends-Shared-Kernel.git"
   },
+  "peerDependencies": {
+    "@nestjs/swagger": "^11.2.6",
+    "class-validator": "^0.15.1"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/swagger": {
+      "optional": true
+    },
+    "class-validator": {
+      "optional": true
+    }
+  },
   "devDependencies": {
+    "@nestjs/swagger": "^11.2.6",
+    "class-validator": "^0.15.1",
     "typescript": "^5.7.3"
   }
 }

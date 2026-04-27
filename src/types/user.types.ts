@@ -1,72 +1,73 @@
 export interface CampusDto {
-  CampusID: number;
-  CampusName: string;
-  CampusAddress: string;
-  Stsrc: string;
+  id: number;
+  name: string;
+  address: string;
 }
 
-export interface DepartmentDto {
-  DepartmentID: number;
-  DepartmentName: string;
-  Stsrc: string;
+export interface MajorDto {
+  id: number;
+  name: string;
 }
 
 export interface HobbyDto {
-  HobbyID: number;
-  UserID: number;
-  RoleName: string;
-  Stsrc: string;
+  id: number;
+  name: string;
 }
 
-export interface UserDto {
-  UserID: number;
-  Username: string;
-  Email: string | null;
-  ImageUrl: string;
-  Description: string;
-  CampusID: number | null;
-  DepartmentID: number | null;
-  CodeYear: number | null;
-  Stsrc: string;
-  campus: CampusDto | null;
-  department: DepartmentDto | null;
+export interface UserPhotoDto {
+  id: number;
+  url: string;
+  sortOrder: number;
+  isProfile: boolean;
+}
+
+export interface UserProfileDto {
+  id: number;
+  displayName: string;
+  binusianEmail: string;
+  phoneNumber: string;
+  binusianYear: number;
+  description: string;
+  profilePhotoUrl: string;
+  campus: CampusDto;
+  major: MajorDto;
   hobbies: HobbyDto[];
+  photos: UserPhotoDto[];
 }
 
 export interface AuthResponseDto {
   access_token: string;
-  user: {
-    id: number;
-    username: string;
-    email: string | null;
-  };
+  user: UserProfileDto;
 }
 
 export interface RegisterDto {
-  username: string;
-  email: string;
+  binusianEmail: string;
   password: string;
-  campusId?: number;
-  departmentId?: number;
-  codeYear?: number;
+  phoneNumber: string;
+  displayName: string;
+  binusianYear: number;
+  majorId: number;
+  campusId: number;
+  profilePhotoUrl: string;
+  photoUrls?: string[];
+  hobbyIds: number[];
+  description?: string;
 }
 
 export interface LoginDto {
-  email: string;
-  password: string;
-}
-
-export interface FirebaseAuthDto {
   idToken: string;
 }
 
 export interface UpdateUserDto {
-  Username?: string;
-  Description?: string;
-  ImageUrl?: string;
-  CampusID?: number;
-  DepartmentID?: number;
-  CodeYear?: number;
+  displayName?: string;
+  description?: string;
+  phoneNumber?: string;
+  profilePhotoUrl?: string;
+  campusId?: number;
+  majorId?: number;
+  binusianYear?: number;
+  photoUrls?: string[];
+  hobbyIds?: number[];
 }
 
 export interface CreateCampusDto {
@@ -74,10 +75,33 @@ export interface CreateCampusDto {
   campusAddress: string;
 }
 
-export interface CreateDepartmentDto {
-  departmentName: string;
+export interface CreateMajorDto {
+  majorName: string;
 }
 
 export interface CreateHobbyDto {
-  roleName: string;
+  hobbyName: string;
 }
+
+export interface CampusRecordDto {
+  CampusID: number;
+  CampusName: string;
+  CampusAddress: string;
+  Stsrc: string;
+}
+
+export interface MajorRecordDto {
+  DepartmentID: number;
+  DepartmentName: string;
+  Stsrc: string;
+}
+
+export interface HobbyRecordDto {
+  HobbyID: number;
+  HobbyName: string;
+  Stsrc: string;
+}
+
+export type UserDto = UserProfileDto;
+export type DepartmentDto = MajorDto;
+export type CreateDepartmentDto = CreateMajorDto;

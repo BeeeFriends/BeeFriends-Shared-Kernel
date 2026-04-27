@@ -5,6 +5,8 @@
     "declaration": true,
     "outDir": "./dist",
     "strict": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "skipLibCheck": true
   },
