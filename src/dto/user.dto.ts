@@ -13,6 +13,7 @@ import {
   Max,
   Min,
   MinLength,
+  ValidateIf,
 } from 'class-validator';
 
 function toNumber(value: unknown) {
@@ -103,6 +104,29 @@ export class RegisterDto {
   description?: string;
 }
 
+export class FirebaseRegisterDto extends RegisterDto {
+  @ApiPropertyOptional({
+    example: 'eyJhbGciOiJSUzI1NiIsImtpZCI6Ij...',
+    description:
+      'Firebase ID token from the frontend Firebase SDK. When provided, password is not required by the backend.',
+  })
+  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
+  firebaseIdToken?: string;
+
+  @ApiPropertyOptional({
+    example: 'password123',
+    minLength: 6,
+    description:
+      'Required only for the legacy backend-created Firebase password account flow.',
+  })
+  @ValidateIf((dto: FirebaseRegisterDto) => !dto.firebaseIdToken)
+  @IsString()
+  @MinLength(6)
+  password: string;
+}
+
 export class LoginDto {
   @ApiProperty({ example: 'adrian001@binus.ac.id' })
   @Matches(/^[^\s@]+@binus\.ac\.id$/i, {
@@ -114,6 +138,16 @@ export class LoginDto {
   @IsString()
   @MinLength(6)
   password: string;
+}
+
+export class FirebaseTokenLoginDto {
+  @ApiProperty({
+    example: 'eyJhbGciOiJSUzI1NiIsImtpZCI6Ij...',
+    description: 'Firebase ID token returned by the frontend Firebase SDK.',
+  })
+  @IsString()
+  @IsNotEmpty()
+  idToken: string;
 }
 
 export class UpdateUserDto {
