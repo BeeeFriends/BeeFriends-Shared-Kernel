@@ -1,6 +1,6 @@
 {
   "name": "@beefriends/shared-kernel",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Shared types and endpoint constants for BeeFriends",
   "author": "BeeFriends Team",
   "license": "MIT",
