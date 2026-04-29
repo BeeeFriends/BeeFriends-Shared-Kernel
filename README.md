@@ -17,7 +17,7 @@ import {
   HOBBY_ENDPOINTS,
   MAJOR_ENDPOINTS,
   USER_ENDPOINTS,
-} from "@beefriends/shared-kernel";
+} from '@beefriends/shared-kernel';
 
 import type {
   AuthResponseDto,
@@ -25,35 +25,39 @@ import type {
   RegisterDto,
   UpdateUserDto,
   UserProfileDto,
-} from "@beefriends/shared-kernel";
+} from '@beefriends/shared-kernel';
 
 // Backend Nest apps should import validation DTO classes from:
 // import { RegisterDto } from "@beefriends/shared-kernel/dto";
 
 const registerPayload: RegisterDto = {
-  binusianEmail: "adrian001@binus.ac.id",
-  password: "password123",
-  phoneNumber: "+6281234567890",
-  displayName: "Adrian",
+  binusianEmail: 'adrian001@binus.ac.id',
+  password: 'password123',
+  phoneNumber: '+6281234567890',
+  displayName: 'Adrian',
   binusianYear: 2024,
   majorId: 1,
   campusId: 1,
-  profilePhotoUrl: "https://storage.googleapis.com/beefriends/profile/adrian.jpg",
-  photoUrls: ["https://storage.googleapis.com/beefriends/gallery/adrian-1.jpg"],
   hobbyIds: [1, 2, 3],
-  description: "Computer Science student who loves coffee.",
+  description: 'Computer Science student who loves coffee.',
 };
 
-await fetch(AUTH_ENDPOINTS.REGISTER, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(registerPayload),
+const formData = new FormData();
+Object.entries(registerPayload).forEach(([key, value]) => {
+  formData.append(
+    key,
+    Array.isArray(value) ? JSON.stringify(value) : String(value),
+  );
 });
+formData.append('profilePhoto', profilePhotoFile);
+galleryPhotoFiles.forEach((file) => formData.append('photos', file));
 
-const loginPayload: LoginDto = { idToken: "firebase-id-token" };
+await fetch(AUTH_ENDPOINTS.REGISTER, { method: 'POST', body: formData });
+
+const loginPayload: LoginDto = { idToken: 'firebase-id-token' };
 const loginResponse: AuthResponseDto = await fetch(AUTH_ENDPOINTS.LOGIN, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(loginPayload),
 }).then((response) => response.json());
 
@@ -62,29 +66,29 @@ const me: UserProfileDto = loginResponse.user;
 
 ## Endpoints
 
-| Constant | Endpoints |
-| --- | --- |
-| `AUTH_ENDPOINTS` | `REGISTER`, `LOGIN` |
-| `USER_ENDPOINTS` | `ME`, `BY_ID(id)` |
-| `CAMPUS_ENDPOINTS` | `LIST` (`/api/v1/user/campus`), `BY_ID(id)`, `CREATE` |
-| `MAJOR_ENDPOINTS` | `LIST` (`/api/v1/user/majors`), `BY_ID(id)`, `CREATE` |
-| `HOBBY_ENDPOINTS` | `LIST` (`/api/v1/user/hobbies`), `BY_ID(id)`, `CREATE` |
+| Constant           | Endpoints                                              |
+| ------------------ | ------------------------------------------------------ |
+| `AUTH_ENDPOINTS`   | `REGISTER`, `LOGIN`                                    |
+| `USER_ENDPOINTS`   | `ME`, `BY_ID(id)`                                      |
+| `CAMPUS_ENDPOINTS` | `LIST` (`/api/v1/user/campus`), `BY_ID(id)`, `CREATE`  |
+| `MAJOR_ENDPOINTS`  | `LIST` (`/api/v1/user/majors`), `BY_ID(id)`, `CREATE`  |
+| `HOBBY_ENDPOINTS`  | `LIST` (`/api/v1/user/hobbies`), `BY_ID(id)`, `CREATE` |
 
 ## Types
 
-| Type | Description |
-| --- | --- |
-| `RegisterDto` | Payload for `POST /api/v1/auth/register` |
-| `LoginDto` | `{ idToken }` from Firebase client sign-in |
-| `AuthResponseDto` | BeeFriends JWT and normalized user profile |
-| `UserProfileDto` | Public user profile shape returned by auth/user endpoints |
-| `UpdateUserDto` | Partial profile fields for `PATCH /api/v1/users/me` |
-| `CampusDto` | Normalized campus shape inside profile responses |
-| `MajorDto` | Normalized major shape inside profile responses |
-| `HobbyDto` | Normalized hobby shape inside profile responses |
-| `CreateCampusDto` | Payload for creating campus master data |
-| `CreateMajorDto` | Payload for creating major master data |
-| `CreateHobbyDto` | Payload for creating hobby master data |
+| Type              | Description                                                                                                                   |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `RegisterDto`     | Text fields for multipart `POST /api/v1/auth/register`; attach `profilePhoto` and optional repeated `photos` files separately |
+| `LoginDto`        | `{ idToken }` from Firebase client sign-in                                                                                    |
+| `AuthResponseDto` | BeeFriends JWT and normalized user profile                                                                                    |
+| `UserProfileDto`  | Public user profile shape returned by auth/user endpoints                                                                     |
+| `UpdateUserDto`   | Partial profile fields for `PATCH /api/v1/users/me`                                                                           |
+| `CampusDto`       | Normalized campus shape inside profile responses                                                                              |
+| `MajorDto`        | Normalized major shape inside profile responses                                                                               |
+| `HobbyDto`        | Normalized hobby shape inside profile responses                                                                               |
+| `CreateCampusDto` | Payload for creating campus master data                                                                                       |
+| `CreateMajorDto`  | Payload for creating major master data                                                                                        |
+| `CreateHobbyDto`  | Payload for creating hobby master data                                                                                        |
 
 `DEPARTMENT_ENDPOINTS`, `DepartmentDto`, and `CreateDepartmentDto` are kept as compatibility aliases for older frontend code. Prefer the `Major` names for new code.
 
@@ -93,7 +97,7 @@ const me: UserProfileDto = loginResponse.user;
 Backend services can import decorator-backed DTO classes from the `dto` subpath:
 
 ```typescript
-import { LoginDto, RegisterDto } from "@beefriends/shared-kernel/dto";
+import { LoginDto, RegisterDto } from '@beefriends/shared-kernel/dto';
 ```
 
 The root package stays frontend-safe and only exports plain types plus endpoint constants.

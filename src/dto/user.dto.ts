@@ -1,4 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
 import {
   ArrayMaxSize,
   ArrayMinSize,
@@ -13,6 +14,36 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
+
+function toNumber(value: unknown) {
+  return typeof value === 'string' ? Number(value) : value;
+}
+
+function toNumberArray(value: unknown) {
+  if (Array.isArray(value)) {
+    return value.map((item) => Number(item));
+  }
+
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(trimmed);
+    if (Array.isArray(parsed)) {
+      return parsed.map((item) => Number(item));
+    }
+  } catch {
+    // Fall back to comma-separated parsing.
+  }
+
+  return trimmed.split(',').map((item) => Number(item.trim()));
+}
 
 export class RegisterDto {
   @ApiProperty({ example: 'Adrian' })
@@ -40,26 +71,24 @@ export class RegisterDto {
   phoneNumber: string;
 
   @ApiProperty({ example: 2024 })
+  @Transform(({ value }) => toNumber(value))
   @IsInt()
   @Min(2000)
   @Max(2100)
   binusianYear: number;
 
   @ApiProperty({ example: 1 })
+  @Transform(({ value }) => toNumber(value))
   @IsInt()
   campusId: number;
 
   @ApiProperty({ example: 1 })
+  @Transform(({ value }) => toNumber(value))
   @IsInt()
   majorId: number;
 
-  @ApiProperty({
-    example: 'https://storage.googleapis.com/beefriends/profile/adrian.jpg',
-  })
-  @IsUrl({ require_tld: false })
-  profilePhotoUrl: string;
-
   @ApiProperty({ example: [1, 2, 3] })
+  @Transform(({ value }) => toNumberArray(value))
   @IsArray()
   @ArrayMinSize(1)
   @ArrayMaxSize(10)
@@ -67,18 +96,8 @@ export class RegisterDto {
   hobbyIds: number[];
 
   @ApiPropertyOptional({
-    example: [
-      'https://storage.googleapis.com/beefriends/gallery/adrian-1.jpg',
-      'https://storage.googleapis.com/beefriends/gallery/adrian-2.jpg',
-    ],
+    example: 'Computer Science student who loves coffee.',
   })
-  @IsOptional()
-  @IsArray()
-  @ArrayMaxSize(9)
-  @IsUrl({ require_tld: false }, { each: true })
-  photoUrls?: string[];
-
-  @ApiPropertyOptional({ example: 'Computer Science student who loves coffee.' })
   @IsString()
   @IsOptional()
   description?: string;

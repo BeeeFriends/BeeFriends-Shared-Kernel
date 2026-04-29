@@ -48,8 +48,6 @@ export interface RegisterDto {
   binusianYear: number;
   majorId: number;
   campusId: number;
-  profilePhotoUrl: string;
-  photoUrls?: string[];
   hobbyIds: number[];
   description?: string;
 }
