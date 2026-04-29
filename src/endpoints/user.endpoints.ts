@@ -11,21 +11,21 @@ export const USER_ENDPOINTS = {
 } as const;
 
 export const CAMPUS_ENDPOINTS = {
-  LIST: `${BASE}/campus`,
-  BY_ID: (id: number) => `${BASE}/campus/${id}`,
-  CREATE: `${BASE}/campus`,
+  LIST: `${BASE}/user/campus`,
+  BY_ID: (id: number) => `${BASE}/user/campus/${id}`,
+  CREATE: `${BASE}/user/campus`,
 } as const;
 
 export const MAJOR_ENDPOINTS = {
-  LIST: `${BASE}/majors`,
-  BY_ID: (id: number) => `${BASE}/majors/${id}`,
-  CREATE: `${BASE}/majors`,
+  LIST: `${BASE}/user/majors`,
+  BY_ID: (id: number) => `${BASE}/user/majors/${id}`,
+  CREATE: `${BASE}/user/majors`,
 } as const;
 
 export const HOBBY_ENDPOINTS = {
-  LIST: `${BASE}/hobbies`,
-  BY_ID: (id: number) => `${BASE}/hobbies/${id}`,
-  CREATE: `${BASE}/hobbies`,
+  LIST: `${BASE}/user/hobbies`,
+  BY_ID: (id: number) => `${BASE}/user/hobbies/${id}`,
+  CREATE: `${BASE}/user/hobbies`,
 } as const;
 
 export const DEPARTMENT_ENDPOINTS = MAJOR_ENDPOINTS;

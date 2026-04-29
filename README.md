@@ -66,9 +66,9 @@ const me: UserProfileDto = loginResponse.user;
 | --- | --- |
 | `AUTH_ENDPOINTS` | `REGISTER`, `LOGIN` |
 | `USER_ENDPOINTS` | `ME`, `BY_ID(id)` |
-| `CAMPUS_ENDPOINTS` | `LIST`, `BY_ID(id)`, `CREATE` |
-| `MAJOR_ENDPOINTS` | `LIST`, `BY_ID(id)`, `CREATE` |
-| `HOBBY_ENDPOINTS` | `LIST`, `BY_ID(id)`, `CREATE` |
+| `CAMPUS_ENDPOINTS` | `LIST` (`/api/v1/user/campus`), `BY_ID(id)`, `CREATE` |
+| `MAJOR_ENDPOINTS` | `LIST` (`/api/v1/user/majors`), `BY_ID(id)`, `CREATE` |
+| `HOBBY_ENDPOINTS` | `LIST` (`/api/v1/user/hobbies`), `BY_ID(id)`, `CREATE` |
 
 ## Types
 
