@@ -104,12 +104,16 @@ export class RegisterDto {
 }
 
 export class LoginDto {
-  @ApiProperty({
-    description: 'Firebase ID token obtained after signing in on the client',
+  @ApiProperty({ example: 'adrian001@binus.ac.id' })
+  @Matches(/^[^\s@]+@binus\.ac\.id$/i, {
+    message: 'binusianEmail must use @binus.ac.id',
   })
+  binusianEmail: string;
+
+  @ApiProperty({ example: 'password123', minLength: 6 })
   @IsString()
-  @IsNotEmpty()
-  idToken: string;
+  @MinLength(6)
+  password: string;
 }
 
 export class UpdateUserDto {

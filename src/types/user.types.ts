@@ -53,7 +53,8 @@ export interface RegisterDto {
 }
 
 export interface LoginDto {
-  idToken: string;
+  binusianEmail: string;
+  password: string;
 }
 
 export interface UpdateUserDto {
