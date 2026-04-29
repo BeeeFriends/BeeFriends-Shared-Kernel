@@ -1,8 +1,8 @@
 const BASE = '/api/v1';
 
 export const AUTH_ENDPOINTS = {
-  REGISTER: `${BASE}/auth/register`,
-  LOGIN: `${BASE}/auth/login`,
+  REGISTER: `${BASE}/user/auth/register`,
+  LOGIN: `${BASE}/user/auth/login`,
 } as const;
 
 export const USER_ENDPOINTS = {
