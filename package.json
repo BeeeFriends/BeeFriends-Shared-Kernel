@@ -9,13 +9,16 @@
   "typesVersions": {
     "*": {
       "types": [
-        "dist/types/user.types.d.ts"
+        "dist/types/user.types.d.ts",
+        "dist/types/chat.types.d.ts"
       ],
       "dto": [
-        "dist/dto/user.dto.d.ts"
+        "dist/dto/user.dto.d.ts",
+        "dist/dto/chat.dto.d.ts"
       ],
       "endpoints": [
-        "dist/endpoints/user.endpoints.d.ts"
+        "dist/endpoints/user.endpoints.d.ts",
+        "dist/endpoints/chat.endpoints.d.ts"
       ]
     }
   },
@@ -35,6 +38,22 @@
     "./endpoints": {
       "require": "./dist/endpoints/user.endpoints.js",
       "types": "./dist/endpoints/user.endpoints.d.ts"
+    },
+    "./chat": {
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./chat/types": {
+      "require": "./dist/types/chat.types.js",
+      "types": "./dist/types/chat.types.d.ts"
+    },
+    "./chat/dto": {
+      "require": "./dist/dto/chat.dto.js",
+      "types": "./dist/dto/chat.dto.d.ts"
+    },
+    "./chat/endpoints": {
+      "require": "./dist/endpoints/chat.endpoints.js",
+      "types": "./dist/endpoints/chat.endpoints.d.ts"
     }
   },
   "files": [

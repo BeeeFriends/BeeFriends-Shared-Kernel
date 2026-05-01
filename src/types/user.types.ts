@@ -40,48 +40,6 @@ export interface AuthResponseDto {
   user: UserProfileDto;
 }
 
-export interface RegisterDto {
-  binusianEmail: string;
-  password: string;
-  phoneNumber: string;
-  displayName: string;
-  binusianYear: number;
-  majorId: number;
-  campusId: number;
-  hobbyIds: number[];
-  description?: string;
-}
-
-export interface LoginDto {
-  binusianEmail: string;
-  password: string;
-}
-
-export interface UpdateUserDto {
-  displayName?: string;
-  description?: string;
-  phoneNumber?: string;
-  profilePhotoUrl?: string;
-  campusId?: number;
-  majorId?: number;
-  binusianYear?: number;
-  photoUrls?: string[];
-  hobbyIds?: number[];
-}
-
-export interface CreateCampusDto {
-  campusName: string;
-  campusAddress: string;
-}
-
-export interface CreateMajorDto {
-  majorName: string;
-}
-
-export interface CreateHobbyDto {
-  hobbyName: string;
-}
-
 export interface CampusRecordDto {
   CampusID: number;
   CampusName: string;
@@ -103,4 +61,3 @@ export interface HobbyRecordDto {
 
 export type UserDto = UserProfileDto;
 export type DepartmentDto = MajorDto;
-export type CreateDepartmentDto = CreateMajorDto;
