@@ -12,7 +12,7 @@
         "dist/types/user.types.d.ts"
       ],
       "dto": [
-        "dist/dto/user.dto.d.ts"
+        "dist/dto/index.d.ts"
       ],
       "endpoints": [
         "dist/endpoints/user.endpoints.d.ts"
@@ -29,6 +29,14 @@
       "types": "./dist/types/user.types.d.ts"
     },
     "./dto": {
+      "require": "./dist/dto/index.js",
+      "types": "./dist/dto/index.d.ts"
+    },
+    "./dto/chat": {
+      "require": "./dist/dto/chat.dto.js",
+      "types": "./dist/dto/chat.dto.d.ts"
+    },
+    "./dto/user": {
       "require": "./dist/dto/user.dto.js",
       "types": "./dist/dto/user.dto.d.ts"
     },
