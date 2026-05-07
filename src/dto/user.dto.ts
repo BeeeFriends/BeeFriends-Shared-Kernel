@@ -6,6 +6,7 @@ import {
   IsArray,
   IsInt,
   IsNotEmpty,
+  IsIn,
   IsOptional,
   IsString,
   IsUrl,
@@ -70,6 +71,18 @@ export class RegisterDto {
     message: 'phoneNumber must be a valid phone number',
   })
   phoneNumber: string;
+
+  @ApiProperty({ enum: ['Male', 'Female'], example: 'Male' })
+  @IsString()
+  @IsIn(['Male', 'Female'])
+  gender: string;
+
+  @ApiProperty({ example: 19, minimum: 17, maximum: 60 })
+  @Transform(({ value }) => toNumber(value))
+  @IsInt()
+  @Min(17)
+  @Max(60)
+  age: number;
 
   @ApiProperty({ example: 2024 })
   @Transform(({ value }) => toNumber(value))
@@ -169,6 +182,20 @@ export class UpdateUserDto {
   })
   phoneNumber?: string;
 
+  @ApiPropertyOptional({ enum: ['Male', 'Female'], example: 'Male' })
+  @IsString()
+  @IsIn(['Male', 'Female'])
+  @IsOptional()
+  gender?: string;
+
+  @ApiPropertyOptional({ example: 19, minimum: 17, maximum: 60 })
+  @Transform(({ value }) => toNumber(value))
+  @IsInt()
+  @IsOptional()
+  @Min(17)
+  @Max(60)
+  age?: number;
+
   @ApiPropertyOptional({
     example: 'https://storage.googleapis.com/beefriends/profile/adrian.jpg',
   })
@@ -201,7 +228,7 @@ export class UpdateUserDto {
   })
   @IsOptional()
   @IsArray()
-  @ArrayMaxSize(9)
+  @ArrayMaxSize(2)
   @IsUrl({ require_tld: false }, { each: true })
   photoUrls?: string[];
 

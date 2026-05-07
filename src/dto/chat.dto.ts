@@ -246,6 +246,12 @@ export class MatchProfileDto {
   phoneNumber: string | null;
 
   @ApiPropertyOptional({ nullable: true })
+  gender: string | null;
+
+  @ApiPropertyOptional({ nullable: true })
+  age: number | null;
+
+  @ApiPropertyOptional({ nullable: true })
   binusianYear: number | null;
 
   @ApiPropertyOptional({ nullable: true })

@@ -26,6 +26,8 @@ export interface UserProfileDto {
   displayName: string;
   binusianEmail: string;
   phoneNumber: string;
+  gender: string;
+  age: number;
   binusianYear: number;
   description: string;
   profilePhotoUrl: string;
@@ -45,6 +47,8 @@ export interface RegisterDto {
   password: string;
   phoneNumber: string;
   displayName: string;
+  gender: string;
+  age: number;
   binusianYear: number;
   majorId: number;
   campusId: number;
@@ -61,6 +65,8 @@ export interface UpdateUserDto {
   displayName?: string;
   description?: string;
   phoneNumber?: string;
+  gender?: string;
+  age?: number;
   profilePhotoUrl?: string;
   campusId?: number;
   majorId?: number;

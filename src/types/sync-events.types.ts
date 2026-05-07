@@ -24,6 +24,8 @@ export type UserSnapshotPayload = {
   displayName?: string | null;
   binusianEmail?: string | null;
   phoneNumber?: string | null;
+  gender?: string | null;
+  age?: number | null;
   binusianYear?: number | null;
   description?: string | null;
   profilePhotoUrl?: string | null;
