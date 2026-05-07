@@ -49,6 +49,58 @@ export type UserSyncPayload = {
   major?: { id?: number | null; name?: string | null } | null;
 };
 
+export type UserSyncSource = {
+  UserID: number;
+  Username?: string | null;
+  Email?: string | null;
+  PhoneNumber?: string | null;
+  Gender?: string | null;
+  Age?: number | null;
+  CodeYear?: number | null;
+  Description?: string | null;
+  ProfilePhotoUrl?: string | null;
+  CampusID?: number | null;
+  DepartmentID?: number | null;
+  campus?: {
+    CampusID?: number | null;
+    CampusName?: string | null;
+    CampusAddress?: string | null;
+  } | null;
+  department?: {
+    DepartmentID?: number | null;
+    DepartmentName?: string | null;
+  } | null;
+  hobbies?: {
+    HobbyID?: number | null;
+    hobby?: {
+      HobbyID?: number | null;
+      HobbyName?: string | null;
+    } | null;
+  }[];
+  photos?: {
+    UserPhotoID?: number | null;
+    PhotoUrl?: string | null;
+    SortOrder?: number | null;
+    IsProfile?: boolean | null;
+  }[];
+};
+
+export type CampusSyncSource = {
+  CampusID: number;
+  CampusName: string;
+  CampusAddress?: string | null;
+};
+
+export type DepartmentSyncSource = {
+  DepartmentID: number;
+  DepartmentName: string;
+};
+
+export type HobbySyncSource = {
+  HobbyID: number;
+  HobbyName: string;
+};
+
 export type CampusSyncedEvent = SyncEventBase<
   'campus.synced' | 'campus.created' | 'campus.updated'
 > & {
