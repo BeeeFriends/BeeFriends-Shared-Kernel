@@ -3,23 +3,23 @@ export type SyncEventBase<TType extends string> = {
   timestamp?: string;
 };
 
-export type CampusSnapshotPayload = {
+export type CampusSyncPayload = {
   id: number;
   name: string;
   address?: string | null;
 };
 
-export type DepartmentSnapshotPayload = {
+export type DepartmentSyncPayload = {
   id: number;
   name: string;
 };
 
-export type HobbySnapshotPayload = {
+export type HobbySyncPayload = {
   id: number;
   name: string;
 };
 
-export type UserSnapshotPayload = {
+export type UserSyncPayload = {
   id: number;
   displayName?: string | null;
   binusianEmail?: string | null;
@@ -52,7 +52,7 @@ export type UserSnapshotPayload = {
 export type CampusSyncedEvent = SyncEventBase<
   'campus.synced' | 'campus.created' | 'campus.updated'
 > & {
-  campus: CampusSnapshotPayload;
+  campus: CampusSyncPayload;
 };
 
 export type CampusDeletedEvent = SyncEventBase<'campus.deleted'> & {
@@ -62,7 +62,7 @@ export type CampusDeletedEvent = SyncEventBase<'campus.deleted'> & {
 export type DepartmentSyncedEvent = SyncEventBase<
   'department.synced' | 'department.created' | 'department.updated'
 > & {
-  department: DepartmentSnapshotPayload;
+  department: DepartmentSyncPayload;
 };
 
 export type DepartmentDeletedEvent = SyncEventBase<'department.deleted'> & {
@@ -72,7 +72,7 @@ export type DepartmentDeletedEvent = SyncEventBase<'department.deleted'> & {
 export type HobbySyncedEvent = SyncEventBase<
   'hobby.synced' | 'hobby.created' | 'hobby.updated'
 > & {
-  hobby: HobbySnapshotPayload;
+  hobby: HobbySyncPayload;
 };
 
 export type HobbyDeletedEvent = SyncEventBase<'hobby.deleted'> & {
@@ -82,7 +82,7 @@ export type HobbyDeletedEvent = SyncEventBase<'hobby.deleted'> & {
 export type UserSyncedEvent = SyncEventBase<
   'user.synced' | 'user.created' | 'user.updated'
 > & {
-  user: UserSnapshotPayload;
+  user: UserSyncPayload;
 };
 
 export type UserDeletedEvent = SyncEventBase<'user.deleted'> & {
