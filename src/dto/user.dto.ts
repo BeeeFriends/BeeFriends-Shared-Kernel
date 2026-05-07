@@ -228,7 +228,7 @@ export class UpdateUserDto {
   })
   @IsOptional()
   @IsArray()
-  @ArrayMaxSize(2)
+  @ArrayMaxSize(3)
   @IsUrl({ require_tld: false }, { each: true })
   photoUrls?: string[];
 
