@@ -1,8 +1,8 @@
-const BASE = '/api/v1';
+const BASE = '/v1/user';
 
 export const AUTH_ENDPOINTS = {
-  REGISTER: `${BASE}/user/auth/register`,
-  LOGIN: `${BASE}/user/auth/login`,
+  REGISTER: `${BASE}/auth/register`,
+  LOGIN: `${BASE}/auth/login`,
 } as const;
 
 export const USER_ENDPOINTS = {
@@ -11,21 +11,21 @@ export const USER_ENDPOINTS = {
 } as const;
 
 export const CAMPUS_ENDPOINTS = {
-  LIST: `${BASE}/user/campus`,
-  BY_ID: (id: number) => `${BASE}/user/campus/${id}`,
-  CREATE: `${BASE}/user/campus`,
+  LIST: `${BASE}/campus`,
+  BY_ID: (id: number) => `${BASE}/campus/${id}`,
+  CREATE: `${BASE}/campus`,
 } as const;
 
 export const MAJOR_ENDPOINTS = {
-  LIST: `${BASE}/user/majors`,
-  BY_ID: (id: number) => `${BASE}/user/majors/${id}`,
-  CREATE: `${BASE}/user/majors`,
+  LIST: `${BASE}/majors`,
+  BY_ID: (id: number) => `${BASE}/majors/${id}`,
+  CREATE: `${BASE}/majors`,
 } as const;
 
 export const HOBBY_ENDPOINTS = {
-  LIST: `${BASE}/user/hobbies`,
-  BY_ID: (id: number) => `${BASE}/user/hobbies/${id}`,
-  CREATE: `${BASE}/user/hobbies`,
+  LIST: `${BASE}/hobbies`,
+  BY_ID: (id: number) => `${BASE}/hobbies/${id}`,
+  CREATE: `${BASE}/hobbies`,
 } as const;
 
 export const DEPARTMENT_ENDPOINTS = MAJOR_ENDPOINTS;
