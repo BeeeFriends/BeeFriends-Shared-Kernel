@@ -36,6 +36,10 @@
       "require": "./dist/dto/chat.dto.js",
       "types": "./dist/dto/chat.dto.d.ts"
     },
+    "./dto/notification": {
+      "require": "./dist/dto/notification.dto.js",
+      "types": "./dist/dto/notification.dto.d.ts"
+    },
     "./dto/user": {
       "require": "./dist/dto/user.dto.js",
       "types": "./dist/dto/user.dto.d.ts"
@@ -47,6 +51,10 @@
     "./endpoints/chat": {
       "require": "./dist/endpoints/chat.endpoints.js",
       "types": "./dist/endpoints/chat.endpoints.d.ts"
+    },
+    "./endpoints/notification": {
+      "require": "./dist/endpoints/notification.endpoints.js",
+      "types": "./dist/endpoints/notification.endpoints.d.ts"
     },
     "./endpoints/user": {
       "require": "./dist/endpoints/user.endpoints.js",
