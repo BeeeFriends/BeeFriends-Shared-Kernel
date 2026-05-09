@@ -170,3 +170,21 @@ export class RegisterDeviceTokenDto {
   @IsString()
   deviceId?: string;
 }
+
+export class UpdateDeviceTokenStateDto {
+  @ApiProperty()
+  @Type(() => Number)
+  @IsInt()
+  userId: number;
+
+  @ApiProperty()
+  @IsString()
+  token: string;
+
+  @ApiProperty({
+    description:
+      'Whether this device should receive remote push notifications right now.',
+  })
+  @IsBoolean()
+  isActive: boolean;
+}

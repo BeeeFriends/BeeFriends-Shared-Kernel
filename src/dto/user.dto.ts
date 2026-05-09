@@ -240,6 +240,19 @@ export class UpdateUserDto {
   hobbyIds?: number[];
 }
 
+export class ChatAttachmentUploadResultDto {
+  @ApiProperty({
+    example: 'users/adrian-binus-ac-id/chat/1715000000000-image.jpg',
+  })
+  objectName: string;
+
+  @ApiProperty({
+    example:
+      'https://storage.googleapis.com/beefriends/users/adrian-binus-ac-id/chat/1715000000000-image.jpg',
+  })
+  url: string;
+}
+
 export class CreateCampusDto {
   @ApiProperty({ example: 'Bina Nusantara Alam Sutera' })
   @IsString()

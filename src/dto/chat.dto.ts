@@ -157,6 +157,9 @@ export class ConversationDto {
   lastMessage: MessageDto | null;
 
   @ApiProperty()
+  unreadCount: number;
+
+  @ApiProperty()
   createdAt: Date;
 
   @ApiProperty()

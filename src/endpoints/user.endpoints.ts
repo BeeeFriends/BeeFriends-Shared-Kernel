@@ -7,6 +7,7 @@ export const AUTH_ENDPOINTS = {
 
 export const USER_ENDPOINTS = {
   ME: `${BASE}/users/me`,
+  CHAT_ATTACHMENTS: `${BASE}/users/me/chat-attachments`,
   BY_ID: (id: number) => `${BASE}/users/${id}`,
 } as const;
 

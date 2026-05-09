@@ -8,4 +8,5 @@ export const NOTIFICATION_ENDPOINTS = {
   MARK_ALL_READ: `${BASE}/read-all`,
   SETTINGS: (userId: number) => `${BASE}/settings/${userId}`,
   DEVICE_TOKENS: `${BASE}/device-tokens`,
+  DEVICE_TOKEN_STATE: `${BASE}/device-tokens/state`,
 } as const;
