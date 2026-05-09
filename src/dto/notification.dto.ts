@@ -115,6 +115,11 @@ export type ChatMessageNotificationEvent = {
     senderId: number;
     content: string;
   };
+  sender?: {
+    id: number;
+    displayName?: string | null;
+    profilePhotoUrl?: string | null;
+  };
   participantIds?: number[];
 };
 
