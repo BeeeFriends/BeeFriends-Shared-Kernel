@@ -89,9 +89,6 @@ export class NotificationSettingsDto {
   matchEnabled: boolean;
 
   @ApiProperty()
-  chatEnabled: boolean;
-
-  @ApiProperty()
   pushEnabled: boolean;
 
   @ApiProperty()
@@ -138,11 +135,6 @@ export class UpdateNotificationSettingsDto {
   @IsOptional()
   @IsBoolean()
   matchEnabled?: boolean;
-
-  @ApiPropertyOptional()
-  @IsOptional()
-  @IsBoolean()
-  chatEnabled?: boolean;
 
   @ApiPropertyOptional()
   @IsOptional()
